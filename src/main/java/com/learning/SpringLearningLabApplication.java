@@ -8,6 +8,7 @@ import com.learning.ioccontainer.injection.NotificationService;
 import com.learning.ioccontainer.multiplebeans.CheckoutService;
 import com.learning.ioccontainer.multiplebeans.PaymentGateway;
 import com.learning.ioccontainer.multiplebeans.PaymentProcessor;
+import com.learning.ioccontainer.scopes.PrototypeService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -110,6 +111,13 @@ public class SpringLearningLabApplication {
 		System.out.println("\n---Listing all payment gateways---");
 		PaymentProcessor pp = beanFactory.getBean(PaymentProcessor.class);
 		pp.listAllTheGateways();
+
+		System.out.println("\n---Prototype Scope---");
+		PrototypeService ps1= context.getBean(PrototypeService.class);
+		PrototypeService ps2 = beanFactory.getBean(PrototypeService.class);
+		System.out.println(ps1+"\n"+ps2);
+
+		System.out.println(ps1 == ps2);
 
 
 

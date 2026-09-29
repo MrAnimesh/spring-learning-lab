@@ -1,0 +1,26 @@
+Important interview nuance
+    Spring singleton does not mean: one object in the entire JVM.
+
+    It means: one bean instance per Spring IoC container for that bean definition.
+
+    Usually application has one main context, so practically you often see one instance.
+
+
+Singleton
+- Default scope.
+- One instance per bean definition per Spring container.
+- Usually used for services/repositories/controllers.
+- Avoid mutable request-specific shared state.
+
+Prototype
+- New instance whenever requested from the container.
+- Injecting prototype into singleton does not automatically
+  create a new instance on every method call.
+
+Request
+- One instance per HTTP request.
+- Web-only.
+
+Session
+- One instance per HTTP session.
+- Web-only.
